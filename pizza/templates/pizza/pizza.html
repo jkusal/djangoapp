@@ -1,0 +1,24 @@
+{% extends 'szablon.html' %}
+
+{% block tytul %}Lista pizz{% endblock tytul %}
+
+{% block naglowek %}Pizze{% endblock naglowek %}
+
+{% block tresc %}
+<h2>Dodaj pizze</h2>
+    <form action="." method="POST">
+    {% csrf_token %}
+        <input type="text" name="nazwa" size="30">
+        <br>
+        <input type="text" name="cena">
+        <br>
+        <input type="submit" value="Zapisz">
+    </form>
+
+<h2>Lista pizz</h2>
+<ol>
+    {% for pizza in pizze %}
+        <li>{{ pizza.nazwa }}&nbsp{{ pizza.cena }}</li>
+    {% endfor %}
+</ol>
+{% endblock tresc %}
